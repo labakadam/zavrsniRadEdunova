@@ -45,9 +45,9 @@ create table korisnik_avioKompanija(
 				prtljaga            boolean
 );
 
-	alter table korisnik 			add foreign key (osiguranje)		references osiguranje(id);
-	alter table twain 			    add foreign key (korisnik)		    references korisnik(id);
-	alter table twain        		add foreign key (avioKompanija) 	references avioKompanija(id);
-	alter table avioKompanija 		add foreign key (osiguranje) 		references osiguranje(id);
-	alter table avioKompanija 		add foreign key (zaposlenik)   	    references zaposlenik(id);
+	alter table korisnik 							add foreign key (osiguranje)		references osiguranje(id);
+	alter table korisnik_avioKompanija 			    add foreign key (korisnik)		    references korisnik(id);
+	alter table korisnik_avioKompanija       		add foreign key (avioKompanija) 	references avioKompanija(id);
+	alter table avioKompanija 						add foreign key (osiguranje) 		references osiguranje(id);
+	alter table avioKompanija 						add foreign key (zaposlenik)   	    references zaposlenik(id);
 
