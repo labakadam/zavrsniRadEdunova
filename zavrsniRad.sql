@@ -36,7 +36,7 @@ create table osiguranje(
 				iban				char(21) not null,
 				oib 				char(11)
 );
-create table twain(
+create table korisnik_avioKompanija(
 				korisnik 			int not null,
 				avioKompanija	 	int not null,
 				oznakaSjedala       varchar(50) not null,
@@ -45,10 +45,8 @@ create table twain(
 				prtljaga            boolean
 );
 
-	alter table korisnik 			add foreign key (osiguranje)		references osiguranje(id);
-	alter table twain 			    add foreign key (korisnik)		    references korisnik(id);
-	alter table twain        		add foreign key (avioKompanija) 	references avioKompanija(id);
-	alter table avioKompanija 		add foreign key (osiguranje) 		references osiguranje(id);
-	alter table avioKompanija 		add foreign key (zaposlenik)   	    references zaposlenik(id);
-
-
+	alter table korisnik 							add foreign key (osiguranje)		references osiguranje(id);
+	alter table korisnik_avioKompanija 			    add foreign key (korisnik)		    references korisnik(id);
+	alter table korisnik_avioKompanija       		add foreign key (avioKompanija) 	references avioKompanija(id);
+	alter table avioKompanija 						add foreign key (osiguranje) 		references osiguranje(id);
+	alter table avioKompanija 						add foreign key (zaposlenik)   	    references zaposlenik(id);
