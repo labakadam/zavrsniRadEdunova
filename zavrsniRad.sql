@@ -36,19 +36,19 @@ create table osiguranje(
 				iban				char(21) not null,
 				oib 				char(11)
 );
-create table safeFlyEu(
-				id                  int not null primary key auto_increment,
-				informacija         varchar(50) not null,
-				avioKompanija       int not null,
-				let                 int not null,
-				cijena              decimal(18,2) not null,
-				vrijeme             datetime not null,
-				grad                varchar(50) not null
+create table twain(
+				korisnik 			int not null,
+				avioKompanija	 	int not null,
+				oznakaSjedala       varchar(50) not null,
+				hrana               boolean,
+				pice                boolean,
+				prtljaga            boolean
 );
 
 	alter table korisnik 			add foreign key (osiguranje)		references osiguranje(id);
-	alter table korisnik 			add foreign key (id) 				references safeFlyEu(id);
-	alter table zaposlenik 			add foreign key (avioKompanija)		references safeFlyEu(id);
-	alter table avioKompanija 		add foreign key (zaposlenik) 		references zaposlenik(id);
-	alter table avioKompanija 		add foreign key (osiguranje)		references osiguranje(id);
+	alter table twain 			    add foreign key (korisnik)		    references korisnik(id);
+	alter table twain        		add foreign key (avioKompanija) 	references avioKompanija(id);
+	alter table avioKompanija 		add foreign key (osiguranje) 		references osiguranje(id);
+	alter table avioKompanija 		add foreign key (zaposlenik)   	    references zaposlenik(id);
+
 
